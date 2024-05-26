@@ -1,0 +1,17 @@
+- name: Build db image
+  docker_image:
+    name: quanghuy1604/db-images
+    tag: latest
+    source: pull
+    force_source: true
+
+
+- name: Create db container
+  docker_container:
+    name: db
+    image: quanghuy1604/db-images:latest
+    restart_policy: "unless-stopped"
+    ports:
+    - "27017:27017"
+    networks:
+      - name: midterm

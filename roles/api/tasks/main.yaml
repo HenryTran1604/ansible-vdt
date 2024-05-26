@@ -1,0 +1,33 @@
+- name: Build back-end image
+  docker_image:
+    name: quanghuy1604/api-images
+    tag: latest
+    source: pull
+    force_source: true
+
+
+- name: Create api container
+  docker_container:
+    name: be1
+    image: quanghuy1604/api-images:latest
+    restart_policy: "unless-stopped"
+    state: started
+    ports:
+      - "8000:8000"
+    env:
+      MONGO_URL: mongodb://{{database_container_name}}:27017
+    networks:
+      - name: midterm
+
+- name: Create api container
+  docker_container:
+    name: be2
+    image: quanghuy1604/api-images:latest
+    restart_policy: "unless-stopped"
+    state: started
+    ports:
+      - "8001:8001"
+    env:
+      MONGO_URL: mongodb://{{database_container_name}}:27017
+    networks:
+      - name: midterm

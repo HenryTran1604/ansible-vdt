@@ -1,0 +1,7 @@
+container_name_1: fe1
+external_port_1: 80
+internal_port_1: 80
+
+container_name_2: fe2
+external_port_2: 81
+internal_port_2: 81

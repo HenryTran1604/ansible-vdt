@@ -1,0 +1,27 @@
+---
+- name: Build frontend image
+  community.docker.docker_image:
+    name: quanghuy1604/web-images
+    tag: latest
+    source: pull
+    force_source: true
+
+- name: Create web container
+  community.docker.docker_container:
+    name: fe1
+    image:  quanghuy1604/web-images:latest
+    restart_policy: "unless-stopped"
+    ports:
+      - "80:80"
+    networks:
+      - name: midterm
+
+- name: Create web container
+  community.docker.docker_container:
+    name: fe2
+    image: quanghuy1604/web-images:latest
+    restart_policy: "unless-stopped"
+    ports:
+      - "81:81"
+    networks:
+      - name: midterm
