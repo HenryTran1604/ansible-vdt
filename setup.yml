@@ -1,5 +1,5 @@
 ---
-- name: Setup OS enviroment
+- name: Setup enviroment
   hosts: all
   become: true
   gather_facts: false

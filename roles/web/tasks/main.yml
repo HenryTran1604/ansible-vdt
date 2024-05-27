@@ -8,20 +8,20 @@
 
 - name: Create web container
   community.docker.docker_container:
-    name: fe1
+    name: "{{fe_container_name_1}}"
     image:  quanghuy1604/web-images:latest
     restart_policy: "unless-stopped"
     ports:
-      - "80:80"
+      - "{{fe_external_port_1}}:{{fe_internal_port_1}}"
     networks:
       - name: midterm
 
 - name: Create web container
   community.docker.docker_container:
-    name: fe2
+    name: "{{fe_container_name_2}}"
     image: quanghuy1604/web-images:latest
     restart_policy: "unless-stopped"
     ports:
-      - "81:81"
+      - "{{fe_external_port_2}}:{{fe_internal_port_2}}"
     networks:
       - name: midterm

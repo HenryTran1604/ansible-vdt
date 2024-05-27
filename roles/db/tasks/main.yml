@@ -12,6 +12,6 @@
     image: quanghuy1604/db-images:latest
     restart_policy: "unless-stopped"
     ports:
-    - "27017:27017"
+    - "{{db_external_port}}:{{db_internal_port}}"
     networks:
       - name: midterm
